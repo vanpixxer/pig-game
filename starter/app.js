@@ -45,4 +45,24 @@ var scores, roundScore, activePlayer;
       
       
       // 3. update the round score if the rolled number was not 1
+      if (dice !== 1) {
+          //add score after each roll
+          roundScore += dice;   //same as roundScore = roundScore + dice
+          document.querySelector('#current-' + activePlayer).textContent = roundScore;
+      } else {
+          //next player's turn
+          //create ternary operator
+          activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+          //set roundScore back to zero
+          roundScore = 0;
+          
+          document.getElementById('current-0').textContent = '0';
+          document.getElementById('current-1').textContent = '0';
+          
+          document.querySelector('.player-0-panel').classList.toggle('active');
+          document.querySelector('.player-1-panel').classList.toggle('active');
+          
+          document.querySelector('.dice').style.display = 'none';
+      }
+      
   });
