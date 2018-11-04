@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 // create variable to keep track of score for each player
-var scores, roundScore, activePlayer, dice;
+var scores, roundScore, activePlayer;
 
  scores = [0, 0];
  roundScore = 0;
@@ -18,13 +18,31 @@ var scores, roundScore, activePlayer, dice;
 // also need a variable to tell us who is the current active player
  activePlayer = 0;
 
-// we need to calculate random numbers for the dice
- dice = Math.floor(Math.random() * 6) + 1;
 
-   document.querySelector('#current-' + activePlayer).textContent = dice;
+  // document.querySelector('#current-' + activePlayer).textContent = dice;
  //document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
-  var x = document.querySelector('#score-0').textContent;
-  console.log(x);
+  //var x = document.querySelector('#score-0').textContent;
+
 
   document.querySelector('.dice').style.display = 'none';
+
+//set all initial values to zero
+  document.getElementById('score-0').textContent = '0';
+  document.getElementById('score-1').textContent = '0';
+  document.getElementById('current-0').textContent = '0'; 
+  document.getElementById('current-1').textContent = '0'; 
+
+// set up event handler
+  document.querySelector('.btn-roll').addEventListener('click', function() {
+      // 1. we need a random number
+      var dice = Math.floor(Math.random() * 6) + 1;
+      
+      // 2. display the result
+      var diceDOM = document.querySelector('.dice');
+      diceDOM.style.display = 'block';
+      diceDOM.src = 'dice-' + dice + '.png';
+      
+      
+      // 3. update the round score if the rolled number was not 1
+  });
